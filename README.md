@@ -1,2 +1,2 @@
-# django-todo-list
-A simple to do list built with Django
+# *Y*ummi
+A simple to-do list built with Django
