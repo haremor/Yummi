@@ -1,0 +1,26 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<a href="{% url 'tasks' %}">BACK</a>
+<form method="POST">
+    {% csrf_token %}
+    <p id="are-you-sure-p">Are you sure? "{{task}}" is going to be deleted FOREVER.</p>
+    <input id="delete-input" value="Delete", type="submit">
+</form>
+<script>
+    const deleteInput = document.getElementById('delete-input');
+    const areYouSureP = document.getElementById('are-you-sure-p');
+    let deleteState = 0;
+
+    deleteInput.onclick = ((event) => {
+        if (deleteState === 1) {
+            return;
+        }
+
+        deleteState++;
+        event.preventDefault();
+        areYouSureP.textContent = 'Are you REALLY sure?';
+    })
+</script>
+
+{% endblock content %}

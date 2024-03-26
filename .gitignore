@@ -1,0 +1,4 @@
+./todo_list/base/__pycache__
+./todo_list/todo_list/__pycache__
+./todo_list/db.sqlite3
+venv/

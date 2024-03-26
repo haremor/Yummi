@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg, #F3BDE2, #e4f3d6);
+            height: 100%;
+            margin: 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            padding-top: 50px;
+        }
+
+        input {
+            outline: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        td:nth-child(2) {
+            text-align: right;
+        }
+
+        td:nth-child(3) {
+            text-align: left;
+        }
+
+        .edit-button {
+            color: #117c11;
+        }
+
+        .edit-button:hover {
+            filter: saturate(4);
+        }
+
+        .delete-button {
+            color: #cc4848;
+        }
+
+        .delete-button:hover {
+            filter: saturate(10);
+        }
+
+        .container {
+            max-width: 550px;
+            margin: auto;
+            background-color: #fff;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            background: linear-gradient(45deg, #d5c0f7 50%, #eb7363 50%);
+        }
+
+        .task-area {
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

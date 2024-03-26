@@ -1,0 +1,46 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <!-- The first letter will be capitalised -->
+        <h1>Welcome, {{request.user|title}}</h1>
+        <h3 style="margin:0">You have <i>{{count}}</i> unfinished task{{count|pluralize:"s"}}</h3>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout" />
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+<div class="task-area">
+    <a href="{% url 'task-create' %}">ADD TASK</a>
+
+    <form method="GET">
+        <input type="text" name="search-area" value="{{search_input}}">
+        <input type="submit" value="Search">
+    </form>
+    <div>
+        {% if tasks %}
+        <table style="width: 70%; table-layout: fixed; margin: auto">
+            <tr>
+                <th colspan="4">Tasks:</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td colspan="2" style="overflow: hidden; text-overflow: ellipsis;">{% if task.complete %} ✓  {% else %} ╳  {% endif %}{{task.title}}</td>
+                <td><a class="edit-button" href="{% url 'task-update' task.id %}">Edit</a></td>
+                <td><a class="delete-button" href="{% url 'task-delete' task.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3>No active tasks</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
